@@ -1,6 +1,24 @@
+{/*import express from 'express';
+
+const app = express();
+
+app.use(express.json({ limit: "50mb" ,extended: true }));
+
+app.listen(5000, () => console.log('Server has started on port 5000'))
+*/}
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-const express = require('express');
+const app = express();
+app.use(bodyParser.json({ limit: "50mb" ,extended: true }));
+app.use(bodyParser.urlencoded({limit:"50mb",extended:true}));
+app.use(cors());
+
+const CONNECTION_URL = ;
+const PORT = process.env.PORT || 5000;
+mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true})
+  .then(() => app.listen(PORT, () => console.log('Server has started on port 5000')))
+  .catch((error) => console.log(error.message));
