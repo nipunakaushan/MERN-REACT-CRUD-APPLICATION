@@ -16,10 +16,12 @@ import postRoutes from './routes/posts.js';  //import posts routes from routs fa
 
 const app = express();
 
-app.use('/posts', postRoutes);
+
 app.use(bodyParser.json({ limit: "50mb" ,extended: true }));
 app.use(bodyParser.urlencoded({limit:"50mb",extended:true}));
 app.use(cors());
+
+app.use('/posts', postRoutes);
 
 const CONNECTION_URL = 'mongodb+srv://blajkwolf:xnULRyjhsr10EFB6@merncrud0.xtdle4j.mongodb.net/?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
